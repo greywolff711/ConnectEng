@@ -1,4 +1,6 @@
 {
     "mongoURI":"mongodb+srv://root:password12345@connecteng.ujw6coc.mongodb.net/?retryWrites=true&w=majority",
-    "jwttoken":"HARSHIT@!!"
+    "jwttoken":"HARSHIT@!!",
+    "githubclientid":"42eac002f4c91136f1d7",
+    "githubsecret":"beca7a8fd2724b3c02b182b409d430ea81d9ce1c"
 }
