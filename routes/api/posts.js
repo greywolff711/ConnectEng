@@ -36,4 +36,52 @@ router.post('/',
 
     });
 
+    //@route  GET api/post
+    //@desc   get all request
+    //@access Private
+
+    router.get('/',auth,async (req,res)=>{
+        try {
+            const posts=await Post.find().sort({date:-1});
+            res.json(posts);
+        } catch (err) {
+            console.log(err.message);
+            res.status(500).send('Server Error');
+        }
+    });
+
+    //@route  GET api/post/:id
+    //@desc   get post
+    //@access Private
+    router.get('/:id',auth,async(req,res)=>{
+        try {
+            const post=await Post.findById(req.params.id);
+            if(!post){
+                return res.status(400).send('No post found');
+            }
+            res.json(post);
+        } catch (err) {
+            console.log(err.message);
+            res.status(500).send('Server Error');
+        }
+    })
+
+    //@route  delete api/post/:id
+    //@desc   get post
+    //@access Private
+    router.delete('/:id',auth,async(req,res)=>{
+        try {
+            const post=await Post.findById(req.params.id);
+            if(post.user!=req.user.id){
+                return res.status(401).send('User not authorized');
+            }
+
+            await post.remove();
+            res.json({msg:'Post removed'});
+        } 
+        catch (err) {
+            console.log(err.message);
+            res.status(500).send('Server Error');
+        }
+    })
 module.exports=router;
