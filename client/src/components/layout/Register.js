@@ -1,7 +1,9 @@
 import React, { Fragment,useState } from 'react'
 import axios from 'axios';
+import {connect} from 'react-redux';
+import { setAlert } from '../../actions/alert';
 
-export const Register = () => {
+const Register = ({setAlert}) => {
   const [formData,setFormData]=useState({
     name:"",
     email:"",
@@ -14,7 +16,7 @@ export const Register = () => {
     e.preventDefault();
 
     if(password!==password2){
-      console.log('Password do not match');
+      setAlert('Password do not match','danger');
     }
     else {
       const newUser={
@@ -85,5 +87,7 @@ export const Register = () => {
         Already have an account? <a href="login.html">Sign In</a>
       </p>
     </Fragment>
-  )
-}
+  );
+};
+
+export default connect(null,{setAlert})(Register);
