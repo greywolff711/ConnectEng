@@ -2,6 +2,7 @@ import React, { Fragment,useState } from 'react'
 import axios from 'axios';
 import {connect} from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types'
 
 const Register = ({setAlert}) => {
   const [formData,setFormData]=useState({
@@ -89,5 +90,9 @@ const Register = ({setAlert}) => {
     </Fragment>
   );
 };
+
+Register.prototype={
+  setAlert:PropTypes.func.isRequired,
+}
 
 export default connect(null,{setAlert})(Register);
