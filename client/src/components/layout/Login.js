@@ -3,9 +3,6 @@ import React, { Fragment } from 'react'
 export const Login = () => {
   return (
     <Fragment>
-      {/* <div class="alert alert-danger">
-        Invalid credentials
-      </div> */}
       <h1 class="large text-primary">Sign In</h1>
       <p class="lead"><i class="fas fa-user"></i> Sign into Your Account</p>
       <form class="form" action="dashboard.html">

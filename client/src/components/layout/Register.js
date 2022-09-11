@@ -2,9 +2,10 @@ import React, { Fragment,useState } from 'react'
 import axios from 'axios';
 import {connect} from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types'
 
-const Register = ({setAlert}) => {
+const Register = ({setAlert,register}) => {
   const [formData,setFormData]=useState({
     name:"",
     email:"",
@@ -15,30 +16,30 @@ const Register = ({setAlert}) => {
   const onchange=(e)=>setFormData({...formData,[e.target.name]:e.target.value});
   const onsubmit=async (e)=>{
     e.preventDefault();
-
     if(password!==password2){
       setAlert('Password do not match','danger');
     }
     else {
-      const newUser={
-        name,
-        email,
-        password,
-        password2
-      };
-      try{
-        const config={
-          headers:{
-            'Content-Type':'application/json'
-          }
-        };
-        const body=JSON.stringify(newUser);
-        const res=await axios.post('/api/users',body,config);
-        console.log(res.data);
-      }
-      catch(err){
-        console.log(err.response.data);
-      }
+      // const newUser={
+      //   name,
+      //   email,
+      //   password,
+      //   password2
+      // };
+      // try{
+      //   const config={
+      //     headers:{
+      //       'Content-Type':'application/json'
+      //     }
+      //   };
+      //   const body=JSON.stringify(newUser);
+      //   const res=await axios.post('/api/users',body,config);
+      //   console.log(res.data);
+      // }
+      // catch(err){
+      //   console.log(err.response.data);
+      // }
+      register({name,email,password});
     }
   }
   return (
@@ -47,7 +48,7 @@ const Register = ({setAlert}) => {
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
       <form className="form" onSubmit={e=>onsubmit(e)}>
         <div className="form-group">
-          <input type="text" placeholder="Name" name="name" required 
+          <input type="text" placeholder="Name" name="name"  
           value={name}
           onChange={e=>onchange(e)}
           />
@@ -93,6 +94,7 @@ const Register = ({setAlert}) => {
 
 Register.prototype={
   setAlert:PropTypes.func.isRequired,
+  register:PropTypes.func.isRequired
 }
 
-export default connect(null,{setAlert})(Register);
+export default connect(null,{setAlert,register})(Register);
