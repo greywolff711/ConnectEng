@@ -1,10 +1,10 @@
-import React,{Fragment, useEffect} from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
-import {BrowserRouter as Router,Route,Routes,Switch} from 'react-router-dom';
-import { Navbar } from './components/layout/Navbar';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
 import { Landing } from './components/layout/Landing';
 import Register from './components/layout/Register';
-import { Login } from './components/layout/Login';
+import Login  from './components/layout/Login';
 import Alert from './components/layout/Alert';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -17,7 +17,6 @@ import store from './store';
     // check for token in LS when app first runs
     if (localStorage.token) {
       // if there is a token set axios headers for all requests
-      console.log(localStorage.token);
       setAuthToken(localStorage.token);
     }
 const App=()=> {
