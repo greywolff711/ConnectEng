@@ -6,6 +6,7 @@ import { Landing } from './components/layout/Landing';
 import Register from './components/layout/Register';
 import Login  from './components/layout/Login';
 import Alert from './components/layout/Alert';
+import CreateProfile from './components/profile-forms/CreateProfile';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -39,6 +40,7 @@ const App=()=> {
         <Routes>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/create-profile" element={<PrivateRoute component={CreateProfile}/>}/>
           <Route path="/dashboard" element={<PrivateRoute component={Dashboard}/>}/>
         </Routes>
       </section>

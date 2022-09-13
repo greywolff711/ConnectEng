@@ -8,6 +8,11 @@ const Navbar = ({logout,auth}) => {
   const authLinks=(
     <ul>
       <li>
+        <Link to="/register">
+        <i className='fas fa-user'></i>{' '}Dashboard
+        </Link>
+      </li>
+      <li>
         <Link onClick={logout} to="/register">
         <i className='fas fa-sign-out-alt'></i>{' '}Logout
         </Link>
@@ -21,7 +26,6 @@ const Navbar = ({logout,auth}) => {
       <li><Link to="/login">Login</Link></li>
     </ul>
   );
-    console.log(auth.isAuthenticated);
   return (
     <nav className="navbar bg-dark">
       <h1>
