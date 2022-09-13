@@ -10,6 +10,8 @@ import CreateProfile from './components/profile-forms/CreateProfile';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/Dashboard/Dashboard';
+import AddExperience from './components/profile-forms/AddExperience';
+import AddEducation from './components/profile-forms/AddEducation';
 import PrivateRoute from './components/Routing/PrivateRoute';
 //Redux
 import { Provider } from 'react-redux';
@@ -42,6 +44,8 @@ const App=()=> {
           <Route path="/login" element={<Login/>}/>
           <Route path="/create-profile" element={<PrivateRoute component={CreateProfile}/>}/>
           <Route path="/dashboard" element={<PrivateRoute component={Dashboard}/>}/>
+          <Route path="/add-experience" element={<PrivateRoute component={AddExperience}/>}/>
+          <Route path="/add-education" element={<PrivateRoute component={AddEducation}/>}/>
         </Routes>
       </section>
     </Router>

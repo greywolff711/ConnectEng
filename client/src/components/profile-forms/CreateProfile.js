@@ -1,10 +1,10 @@
 import React,{Fragment, useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import {Link,useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { createProfile } from '../../actions/profile';
 
-const CreateProfile = ({createProfile,history}) => {
+const CreateProfile = ({createProfile}) => {
     const [formData,setFormData]=useState({
         company:'',
         website:'',
